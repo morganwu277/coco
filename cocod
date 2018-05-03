@@ -23,6 +23,8 @@ try:
 except:
     pass
 
+os.environ['LANG'] = "en_US.UTF8"
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DAEMON = False
 PID_FILE = os.path.join(BASE_DIR, 'coco.pid')
