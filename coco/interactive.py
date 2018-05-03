@@ -58,14 +58,14 @@ class InteractiveServer:
                         continue
                     self.client.send(i.decode('utf-8').replace('\n', '\r\n'))
 
-        banner = _("""\n {title}   {user}, 欢迎使用Jumpserver开源跳板机系统  {end}\r\n\r
-    1) 输入 {green}ID{end} 直接登录 或 输入{green}部分 IP,主机名,备注{end} 进行搜索登录(如果唯一).\r
-    2) 输入 {green}/{end} + {green}IP, 主机名{end} or {green}备注 {end}搜索. 如: /ip\r
-    3) 输入 {green}P/p{end} 显示您有权限的主机.\r
-    4) 输入 {green}G/g{end} 显示您有权限的主机组.\r
-    5) 输入 {green}G/g{end} + {green}组ID{end} 显示该组下主机. 如: g1\r
-    6) 输入 {green}H/h{end} 帮助.\r
-    0) 输入 {green}Q/q{end} 退出.\r\n""").format(
+        banner = _("""\n {title}   [ {user} ], Welcome to Open Source Jumpserver System {end}\r\n\r
+    1) Type {green}ID{end} will login directly OR type {green} partial of IP/hostname/comment{end} will search the machine and login directly(if the result is UNIQUE).\r
+    2) Type {green}/{end} + {green}IP, hostname{end} or {green}comment {end}to search. E.g.,: /ip\r
+    3) Type {green}P/p{end} to show machines allowed under your permission.\r
+    4) Type {green}G/g{end} to show machine group allowed under your permission.\r
+    5) Type {green}G/g{end} + {green}GroupID{end} to show machines under that group. E.g.,: g1\r
+    6) Type {green}H/h{end} for help menu.\r
+    0) Type {green}Q/q{end} to exit.\r\n""").format(
             title="\033[1;32m", green="\033[32m",
             end="\033[0m", user=self.client.user
         )
