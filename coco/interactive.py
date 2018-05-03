@@ -196,11 +196,11 @@ class InteractiveServer:
         self.client.send(title(header.format(fake_group, "ID")))
         for index, group in enumerate(self.asset_groups, 1):
             self.client.send(wr(line.format(group, index)))
-        self.client.send(wr(_("总共: {}").format(len(self.asset_groups)), before=1))
+        self.client.send(wr(_("Total: {}").format(len(self.asset_groups)), before=1))
 
     def display_group_assets(self, _id):
         if _id > len(self.asset_groups) or _id <= 0:
-            self.client.send(wr(warning("没有匹配分组，请重新输入")))
+            self.client.send(wr(warning("No matched group, please input again.")))
             self.display_asset_groups()
             return
 
@@ -223,7 +223,7 @@ class InteractiveServer:
         self.client.send(wr(title(header.format(fake_asset, "ID"))))
         for index, asset in enumerate(self.search_result, 1):
             self.client.send(wr(line.format(asset, index)))
-        self.client.send(wr(_("总共: {} 匹配: {}").format(
+        self.client.send(wr(_("Total: {} matched: {}").format(
             len(self.assets), len(self.search_result)), before=1)
         )
 
@@ -265,7 +265,7 @@ class InteractiveServer:
             return None
 
         while True:
-            self.client.send(wr(_("选择一个登陆: "), after=1))
+            self.client.send(wr(_("Choose one to login: "), after=1))
             self.display_system_users(system_users)
             opt = self.get_option("ID> ")
             if opt.isdigit() and len(system_users) > int(opt):
@@ -286,7 +286,7 @@ class InteractiveServer:
         if self.search_result and len(self.search_result) == 1:
             asset = self.search_result[0]
             if asset.platform == "Windows":
-                self.client.send(warning(_("终端不支持登录windows, 请使用web terminal访问")))
+                self.client.send(warning(_("Terminal login doesn't support windows, please use web terminal to access.")))
                 return
             self.proxy(asset)
         else:
@@ -295,7 +295,7 @@ class InteractiveServer:
     def proxy(self, asset):
         system_user = self.choose_system_user(asset.system_users_granted)
         if system_user is None:
-            self.client.send(_("没有系统用户"))
+            self.client.send(_("There is no system user."))
             return
         forwarder = ProxyServer(self.app, self.client)
         forwarder.proxy(asset, system_user)
