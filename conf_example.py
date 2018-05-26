@@ -11,6 +11,7 @@ class Config:
     """
     Coco config file, coco also load config from server update setting below
     """
+    # if this is commented out, make sure hostname settings(/etc/hostname) on this cocod server can be resolved in DNS.
     # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
     # NAME = "localhost"
 
@@ -25,6 +26,9 @@ class Config:
 
     # 监听的HTTP/WS端口号，默认5000
     # HTTPD_PORT = 5000
+
+    # 保持心跳的默认时间，0为禁用
+    # KEEP_ALIVE_INTERVAL: 20
 
     # 项目使用的ACCESS KEY, 默认会注册,并保存到 ACCESS_KEY_STORE中,
     # 如果有需求, 可以写到配置文件中, 格式 access_key_id:access_key_secret

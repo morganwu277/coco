@@ -37,6 +37,7 @@ class Coco:
         'BIND_HOST': '0.0.0.0',
         'SSHD_PORT': 2222,
         'HTTPD_PORT': 5000,
+        'KEEP_ALIVE_INTERVAL': 20,
         'ACCESS_KEY': '',
         'ACCESS_KEY_ENV': 'COCO_ACCESS_KEY',
         'ACCESS_KEY_FILE': os.path.join(BASE_DIR, 'keys', '.access_key'),

@@ -55,6 +55,8 @@ class SSHServer:
 
     def handle_connection(self, sock, addr):
         transport = paramiko.Transport(sock, gss_kex=False)
+        if self.app.config['KEEP_ALIVE_INTERVAL'] > 0:
+            transport.set_keepalive(self.app.config['KEEP_ALIVE_INTERVAL'])
         try:
             transport.load_server_moduli()
         except IOError:
