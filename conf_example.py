@@ -27,7 +27,7 @@ class Config:
     # 监听的HTTP/WS端口号，默认5000
     # HTTPD_PORT = 5000
 
-    # 保持心跳的默认时间，0为禁用
+    # 保持心跳的默认时间, 单位为秒, 0为禁用
     # KEEP_ALIVE_INTERVAL: 20
 
     # 项目使用的ACCESS KEY, 默认会注册,并保存到 ACCESS_KEY_STORE中,
